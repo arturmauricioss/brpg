@@ -13,6 +13,7 @@ import ConfigPage from '@pages/ConfigPage';
 import LoginPage from '@pages/LoginPage';
 import RegisterPage from '@pages/RegisterPage';
 import { useAuth } from '@hooks/useAuth';
+import { PersonagensProvider } from '@context/PersonagensContext';
 
 function AuthRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -32,7 +33,11 @@ const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <Layout />,
+      element: (
+        <PersonagensProvider>
+          <Layout />
+        </PersonagensProvider>
+      ),
       children: [
         { index: true, element: <Navigate to="/heroes" replace /> },
         {

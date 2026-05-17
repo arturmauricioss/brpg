@@ -4,7 +4,7 @@ import Title from '@components/ui/basic/Title/Title';
 import RowHeader from '@components/ui/common/RowHeader/RowHeader';
 import RowButton from '@components/ui/common/RowButton/RowButton';
 import RowSpan from '@components/ui/common/RowSpan/RowSpan';
-import { usePersonagens } from '@features/newHero/hooks/usePersonagens';
+import { usePersonagens } from '@context/PersonagensContext';
 import { ChessKnight, Skull } from '@components/ui/icons';
 
 export default function HeroPage() {

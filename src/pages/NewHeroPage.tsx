@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Page from '@components/shell/Page/Page';
 import Title from '@components/ui/basic/Title/Title';
@@ -7,13 +8,14 @@ import RowInputButton from '@components/ui/common/RowInputButton/RowInputButton'
 import RowButton from '@components/ui/common/RowButton';
 import RaceSelect from '@features/raceSelection/RaceSelect';
 import { useNewHero } from '@features/newHero/hooks/useNewHero';
-import { usePersonagens } from '@features/newHero/hooks/usePersonagens';
+import { usePersonagens } from '@context/PersonagensContext';
 import { Spawn } from '@components/ui/icons';
 import '@features/raceSelection/RaceSelect.css';
 
 export default function NewHeroPage() {
   const navigate = useNavigate();
   const { salvarPersonagem } = usePersonagens();
+  const [saving, setSaving] = useState(false);
   const {
     nome,
     setNome,
@@ -27,11 +29,15 @@ export default function NewHeroPage() {
   } = useNewHero();
 
   const handleSalvar = async () => {
+    if (saving) return;
+    
     if (!nome || !raca || !genero) {
       alert('Preencha nome, raça e gênero!');
       return;
     }
 
+    setSaving(true);
+    
     try {
       await salvarPersonagem({
         nome,
@@ -41,6 +47,7 @@ export default function NewHeroPage() {
       navigate('/heroes');
     } catch (error) {
       alert('Erro ao salvar personagem');
+      setSaving(false);
     }
   };
 
@@ -86,8 +93,14 @@ export default function NewHeroPage() {
             label: 'Cancelar',
             onClick: () => navigate('/heroes'),
             variant: 'secondary',
+            disabled: saving,
           },
-          { label: 'Salvar', onClick: handleSalvar, variant: 'primary' },
+          { 
+            label: saving ? 'Salvando...' : 'Salvar', 
+            onClick: handleSalvar, 
+            variant: 'primary',
+            disabled: saving 
+          },
         ]}
       />
     </Page>

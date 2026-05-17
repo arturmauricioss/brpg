@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-md);
+  /* padding: var(--space-md); */
   background: var(--surface-container);
-  border: 1px solid var(--outline-variant);
+  /* border: 1px solid var(--outline-variant); */
   border-radius: var(--radius-md);
   flex-wrap: wrap;
   max-width: 600px;
@@ -37,5 +37,5 @@
 .row-button-btn.secondary {
   background: var(--secondary);
   color: var(--on-secondary);
-  border: 1px solid var(--on-secondary);
+  /* border: 1px solid var(--on-secondary); */
 }

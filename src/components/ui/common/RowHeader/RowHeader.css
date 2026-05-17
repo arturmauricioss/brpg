@@ -6,9 +6,19 @@
   font-size: var(--body-md);
   font-weight: 600;
   color: var(--on-surface);
-  margin-block: var(--space-sm);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--outline-variant);
+  margin-top: var(--space-lg);
+}
+
+h1 + .row-header,
+h2 + .row-header,
+h3 + .row-header {
+  margin-top: 0;
+}
+
+.row-header + .row-header {
+  margin-top: 800px;
 }
 
 .row-header.active {

@@ -4,7 +4,7 @@
   align-items: center;
   padding: var(--space-md);
   background: var(--surface-container);
-  border: 1px solid var(--outline-variant);
+  /* border: 1px solid var(--outline-variant); */
   border-radius: var(--radius-md);
   max-width: 600px;
   margin: 0 auto;
