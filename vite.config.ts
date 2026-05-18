@@ -6,17 +6,29 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [
     react(),
+
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+
+      injectRegister: 'auto',
+
+      includeAssets: [
+        'favicon.ico',
+        'apple-touch-icon.png',
+        'mask-icon.svg'
+      ],
+
       manifest: {
         name: 'Brasil RPG',
         short_name: 'BRPG',
         description: 'Sistema de Gestão para RPG de Mesa',
+
         theme_color: '#131314',
         background_color: '#131314',
+
         display: 'standalone',
         start_url: '/',
+
         icons: [
           {
             src: 'pwa/pwa-192x192.png',
@@ -35,10 +47,37 @@ export default defineConfig({
             purpose: 'any maskable'
           }
         ]
+      },
+
+      workbox: {
+        cleanupOutdatedCaches: true,
+
+        clientsClaim: true,
+        skipWaiting: true,
+
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/.*$/i,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'https-cache',
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 dias
+              }
+            }
+          }
+        ]
+      },
+
+      devOptions: {
+        enabled: false
       }
     })
   ],
+
   base: '/',
+
   server: {
     proxy: {
       '/api': {
@@ -47,6 +86,7 @@ export default defineConfig({
       }
     }
   },
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
