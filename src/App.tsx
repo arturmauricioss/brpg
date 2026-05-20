@@ -9,6 +9,9 @@ import ProtectedRoute from '@components/shell/ProtectedRoute/ProtectedRoute';
 import HomePage from '@pages/HomePage';
 import HeroPage from '@pages/HeroPage';
 import NewHeroPage from '@pages/NewHeroPage';
+import CampaignsPage from '@pages/CampaignsPage';
+import NewCampaignPage from '@pages/NewCampaignPage';
+import JoinCampaignPage from '@pages/JoinCampaignPage';
 import ConfigPage from '@pages/ConfigPage';
 import LoginPage from '@pages/LoginPage';
 import RegisterPage from '@pages/RegisterPage';
@@ -77,6 +80,30 @@ const router = createBrowserRouter(
           element: (
             <ProtectedRoute>
               <NewHeroPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'campaigns',
+          element: (
+            <ProtectedRoute>
+              <CampaignsPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'campaigns/new',
+          element: (
+            <ProtectedRoute>
+              <NewCampaignPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: 'campaigns/join',
+          element: (
+            <ProtectedRoute>
+              <JoinCampaignPage />
             </ProtectedRoute>
           ),
         },

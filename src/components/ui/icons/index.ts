@@ -10,6 +10,7 @@ export { default as LightMode } from './icons/LightMode';
 export { default as DarkMode } from './icons/DarkMode';
 export { default as Spawn } from './icons/Spawn';
 export { default as Heptagram } from './icons/Heptagram';
+export { default as ChessKing } from './icons/ChessKing';
 export { Logout } from './icons/Logout';
 
 export type IconName =
@@ -20,6 +21,7 @@ export type IconName =
   | 'master'
   | 'graph'
   | 'chess-knight'
+  | 'chess-king'
   | 'git'
   | 'light-mode'
   | 'dark-mode'
