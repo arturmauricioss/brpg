@@ -13,7 +13,7 @@ export default function CampaignsPage() {
         Campanhas
       </Title>
       <RowHeader icon={Swords} active>
-        Jogando
+        Aventurar-se
       </RowHeader>
       <RowButton
         buttons={[
@@ -26,7 +26,7 @@ export default function CampaignsPage() {
         />
     
       <RowHeader icon={ChessKing} active>
-        Mestrando
+        Mestrar
       </RowHeader>
       <RowButton
         buttons={[
